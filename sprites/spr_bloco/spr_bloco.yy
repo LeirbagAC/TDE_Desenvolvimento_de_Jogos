@@ -19,14 +19,14 @@
   "height":64,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"5bd0d305-4f61-4922-9637-730c96fb162e","blendMode":0,"displayName":"default","isLocked":false,"name":"5bd0d305-4f61-4922-9637-730c96fb162e","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"5bd0d305-4f61-4922-9637-730c96fb162e","blendMode":0,"displayName":"default","isLocked":false,"name":"5bd0d305-4f61-4922-9637-730c96fb162e","opacity":30.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_bloco",
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"TDE_Games",
-    "path":"TDE_Games.yyp",
+    "name":"Sprites",
+    "path":"folders/Sprites.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

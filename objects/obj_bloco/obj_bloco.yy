@@ -32,5 +32,5 @@
     "path":"sprites/spr_bloco/spr_bloco.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }
