@@ -37,6 +37,9 @@
     "name":"spr_player",
     "path":"sprites/spr_player/spr_player.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_frog_Idle",
+    "path":"sprites/spr_frog_Idle/spr_frog_Idle.yy",
+  },
   "visible":true,
 }
