@@ -29,6 +29,8 @@ spr_jump = spr_frog_Jump;
 spr_double_jump = spr_frog_Double_Jump;
 spr_wall_jump = spr_frog_Wall_Jump;
 
+move_checkpoint = false;
+
 function input_player() 
 {
 	var _left, _right, _jump, _xDirection;
