@@ -23,7 +23,7 @@ trava_h = 0;
 
 spr_run = spr_frog_run;
 spr_fall = spr_frog_Fall;
-spr_hit = spr_frog_Hit;
+//spr_hit = spr_frog_Hit;
 spr_idle = spr_frog_Idle;
 spr_jump = spr_frog_Jump;
 spr_double_jump = spr_frog_Double_Jump;

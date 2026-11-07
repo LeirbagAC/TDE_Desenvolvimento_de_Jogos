@@ -29,7 +29,7 @@
   ],
   "name":"spr_player_die",
   "nineSlice":null,
-  "origin":4,
+  "origin":9,
   "parent":{
     "name":"players",
     "path":"folders/players.yy",
@@ -100,7 +100,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":48,
-    "yorigin":48,
+    "yorigin":65,
   },
   "swatchColours":null,
   "swfPrecision":0.5,
