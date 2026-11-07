@@ -90,7 +90,18 @@ function input_player()
 		if(qtd_pulos == (max_pulos - 1)) sprite_index = spr_jump;
 		else sprite_index = spr_double_jump;
 		
-		if(velv > 0) sprite_index = spr_fall;
+		if(velv > 0) 
+		{
+			var _inimigo = instance_place(x, y, obj_inimigo_pai);
+			
+			if(_inimigo)
+			{
+				_inimigo.levou_dano = true;
+				velv = forca_pulo;
+			}
+			
+			sprite_index = spr_fall;
+		}
 	}
 	
 	//Movimento e física de pulo
