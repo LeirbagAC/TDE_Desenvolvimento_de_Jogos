@@ -125,6 +125,12 @@ function input_player()
 				tempo_parede = 0;
 				buffer_pulo = 0;
 			}
+			else if(qtd_pulos == max_pulos) // Caiu da plataforma sem pular
+			{
+				velv = forca_pulo;
+				qtd_pulos = 0;      
+				buffer_pulo = 0;
+			}
 			else if(qtd_pulos == 1)
 			{
 				velv = forca_pulo;
