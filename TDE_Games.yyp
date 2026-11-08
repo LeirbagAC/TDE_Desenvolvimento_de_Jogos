@@ -49,6 +49,7 @@
     {"id":{"name":"obj_mola","path":"objects/obj_mola/obj_mola.yy",},},
     {"id":{"name":"obj_morango","path":"objects/obj_morango/obj_morango.yy",},},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
+    {"id":{"name":"obj_screenshake","path":"objects/obj_screenshake/obj_screenshake.yy",},},
     {"id":{"name":"obj_spike","path":"objects/obj_spike/obj_spike.yy",},},
     {"id":{"name":"obj_start","path":"objects/obj_start/obj_start.yy",},},
     {"id":{"name":"obj_transicao","path":"objects/obj_transicao/obj_transicao.yy",},},

@@ -12,3 +12,9 @@ function transicao_simples(_room)
 	var _transicao = instance_create_layer(0, 0, layer, obj_transicao);
 	_transicao.rm_destino = _room;
 }
+
+function screenshake(_shake)
+{
+	var obj_shake = instance_create_layer(0, 0, layer, obj_screenshake);
+	obj_shake.shake = _shake;
+}

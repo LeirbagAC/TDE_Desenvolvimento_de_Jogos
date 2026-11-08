@@ -5,5 +5,5 @@ if(move_checkpoint == false)
 	
 	muda_sprite(spr_player_die);
 	move_checkpoint = true;
-	
+	screenshake(5);
 }
