@@ -13,7 +13,10 @@ spr_run = -1;
 spr_dano = -1;
 spr_morte = -1;
 
-// Compatibilidade com o código antigo que ainda faz levou_dano = true
+// Valor padrão caso o inimo não passe o dele
+snd_dano = snd_enemy_get_hit;
+snd_morte = snd_enemy_get_hit;
+
 levou_dano = false;
 
 function no_chao()
@@ -44,6 +47,7 @@ function receber_dano(_dano = 1, _dir = 0)
 	{
 		estado = ESTADO_INIMIGO.MORTO;
 		trocar_sprite(spr_morte);
+		tocar_sfx(snd_morte, 1, 1, 0.05);
 		
 		if (instance_exists(hitbox))
 		{
@@ -55,7 +59,8 @@ function receber_dano(_dano = 1, _dir = 0)
 	{
 		estado = ESTADO_INIMIGO.DANO;
 		trocar_sprite(spr_dano);
-		alarm[0] = FPS; // duração da invencibilidade
+		tocar_sfx(snd_dano, 1, 1, 0.05);
+		alarm[0] = FPS;
 	}
 	
 	return true;

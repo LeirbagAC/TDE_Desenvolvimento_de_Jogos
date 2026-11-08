@@ -112,6 +112,7 @@ function input_player()
 			velv = forca_pulo;
 			qtd_pulos--;
 			buffer_pulo = 0;
+			tocar_sfx(snd_cartoon_jump, 1, 1, 0.05);
 		}
 	}
 	else 
@@ -134,18 +135,21 @@ function input_player()
 				qtd_pulos = 1;      // devolve o pulo duplo
 				tempo_parede = 0;
 				buffer_pulo = 0;
+				tocar_sfx(snd_cartoon_jump, 1, 1, 0.05);
 			}
 			else if(qtd_pulos == max_pulos) // Caiu da plataforma sem pular
 			{
 				velv = forca_pulo;
 				qtd_pulos = 0;      
 				buffer_pulo = 0;
+				tocar_sfx(snd_cartoon_jump, 1, 1, 0.05);
 			}
 			else if(qtd_pulos == 1)
 			{
 				velv = forca_pulo;
 				qtd_pulos--;
 				buffer_pulo = 0;
+				tocar_sfx(snd_cartoon_jump, 1, 1, 0.05);
 			}
 		}
 	}
@@ -175,6 +179,7 @@ function levar_dano()
 	velv = 0;
 	velh = 0;
 	
+	tocar_sfx(snd_player_damage);
 	muda_sprite(spr_hit);
 	move_checkpoint = true;
 	screenshake(5);

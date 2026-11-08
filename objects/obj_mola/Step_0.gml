@@ -2,6 +2,8 @@ var _player = instance_place(x, y-3, obj_player);
 
 if(_player) 
 {
+	if(!flag_colisao) tocar_sfx(snd_trampoline); // só no primeiro frame do acionamento
+	
 	muda_sprite(spr_mola_jump);
 	flag_colisao = true;
 	
