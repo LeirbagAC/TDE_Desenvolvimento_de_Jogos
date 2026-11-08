@@ -5,6 +5,19 @@ if(move_checkpoint)
 	
 	if(image_index >= image_number - 1) 
 	{
+		// Acabaram as vidas: congela no último frame e reinicia a fase com fade
+		if(morreu_de_vez)
+		{
+			image_speed = 0;
+			
+			if(!reiniciando)
+			{
+				reiniciando = true;
+				transicao_simples(room);
+			}
+			exit;
+		}
+		
 		var _to_start = true;
 		
 		if(instance_exists(obj_checkpoint))

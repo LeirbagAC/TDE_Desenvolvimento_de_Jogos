@@ -1,0 +1,1 @@
+if (coletado) instance_destroy();

@@ -23,7 +23,6 @@ trava_h = 0;
 
 spr_run = spr_frog_run;
 spr_fall = spr_frog_Fall;
-//spr_hit = spr_frog_Hit;
 spr_idle = spr_frog_Idle;
 spr_jump = spr_frog_Jump;
 spr_double_jump = spr_frog_Double_Jump;
@@ -160,5 +159,28 @@ function input_player()
 	else
 	{
 		velh = lerp(velh, _velh_alvo, 0.2);
+	}
+}
+
+spr_Hit = spr_frog_Hit; 
+
+morreu_de_vez = false;
+reiniciando = false;
+
+// Todo dano passa por aqui
+function levar_dano()
+{
+	if (move_checkpoint) return;
+	
+	velv = 0;
+	velh = 0;
+	
+	muda_sprite(spr_hit);
+	move_checkpoint = true;
+	screenshake(5);
+	
+	if (instance_exists(obj_controle_fase))
+	{
+		morreu_de_vez = obj_controle_fase.perder_vida();
 	}
 }

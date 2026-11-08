@@ -1,0 +1,1 @@
+if (aviso > 0) aviso--;
