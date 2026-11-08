@@ -1,18 +1,19 @@
-// Inherit the parent event
 event_inherited();
 
-inimigo_morto = false;
-levou_dano = false;
-inimigo_vida = 3;
+vida = 3;
+velocidade = 1; 
 
-velocidade = choose(1, -1);
-virar_inimigo = true;
+spr_idle = spr_pig_idle;
+spr_run = spr_pig_Run;
+spr_dano = spr_pig_hit;
+spr_morte = spr_pig_dead;
 
-invencivel = false;
-tempo_decidir_andar = room_speed; 
-andando = true;
+estado = ESTADO_INIMIGO.PARADO;
+tempo_estado = FPS;
 
-pig_hit = instance_create_layer(x, y, layer, obj_hit);
-
-pig_hit.image_yscale = pig_hit.image_yscale * 0.7;
-pig_hit.image_xscale = pig_hit.image_xscale * 1.5;
+hitbox = instance_create_layer(x, y, layer, obj_hit);
+with (hitbox)
+{
+	image_xscale *= 1.5;
+	image_yscale *= 0.7;
+}

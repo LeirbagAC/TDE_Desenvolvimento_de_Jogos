@@ -1,94 +1,62 @@
-if(instance_exists(pig_hit))
-{
-	pig_hit.x = x;
-	pig_hit.y = y-4;
-}
+event_inherited(); // gravidade, hitbox e ponte do dano
 
-//Verifica se o inimigo está morto
-if(inimigo_morto)
+if (estado == ESTADO_INIMIGO.MORTO)
 {
-	instance_destroy(pig_hit);
-	
-	if(image_index >= image_number-1) instance_destroy();
+	velh = 0;
 	exit;
-	
 }
 
-var _chao = place_meeting(x, y+1, obj_bloco);
-var _parede = place_meeting(x + velh, y, obj_bloco);
-var _xDirection = velh * -1;
-
-if(_xDirection != 0)
+if (estado == ESTADO_INIMIGO.DANO)
 {
-	if(_xDirection >= 1) image_xscale = 1;
-	else if(_xDirection <= -1) image_xscale = -1;
-
+	velh = lerp(velh, 0, 0.15); // deixa o empurrão perder força
+	exit;
 }
 
-if(_chao)
+// No ar, não anda
+if (!no_chao())
 {
-	tempo_decidir_andar -= 1;
-	
-	if(tempo_decidir_andar <= 0)
-	{
-		if(andando)
+	velh = 0;
+	exit;
+}
+
+tempo_estado--;
+
+switch (estado)
+{
+	case ESTADO_INIMIGO.PARADO:
+		velh = 0;
+		trocar_sprite(spr_idle);
+		
+		if (tempo_estado <= 0)
 		{
-			virar_inimigo = true;
-			velh = velocidade;
-			andando = false
+			if (irandom(1) == 0) direcao *= -1; // 50% de chance de mudar de lado
+			estado = ESTADO_INIMIGO.ANDANDO;
+			tempo_estado = FPS * 2;
 		}
-		else 
+	break;
+	
+	case ESTADO_INIMIGO.ANDANDO:
+		trocar_sprite(spr_run);
+		
+		// Sensores
+		var _parede = place_meeting(x + direcao, y, obj_bloco);
+		var _borda_x = (direcao > 0) ? bbox_right + 1 : bbox_left - 1;
+		var _sem_chao = !position_meeting(_borda_x + direcao * 2, bbox_bottom + 2, obj_bloco);
+		
+		if (_parede || (!pode_cair && _sem_chao))
 		{
-			velh = 0;
-			
-			if(virar_inimigo)
-			{
-				velocidade *= -1; //choose(1, -1)
-				virar_inimigo = false;
-			}
-			
-			andando = true;
+			direcao *= -1;
 		}
 		
-		tempo_decidir_andar = room_speed * 2;
-	}
-	
-	if(velh != 0 && !levou_dano) sprite_index = spr_pig_Run;
-	else 
-	{
-		if(image_index >= image_number-1) sprite_index = spr_pig_idle;
-	}
-	
-	if(_parede)
-	{
-		velh *= -1;
-	}
-	
-	if(!pode_cair)
-	{
-		if(!place_meeting(x+(velh*10), y+1, obj_bloco)) velh *=1;
-	}
-}
-else 
-{
-	velh = 0;
-	velv += gravidade;
+		velh = direcao * velocidade;
+		
+		if (tempo_estado <= 0)
+		{
+			estado = ESTADO_INIMIGO.PARADO;
+			tempo_estado = FPS * 2;
+		}
+	break;
 }
 
-if(levou_dano && !invencivel)
-{
-	invencivel = true;
-	velh = 0;
-	inimigo_vida--;
-	
-	if(inimigo_vida <= 0)
-	{
-		inimigo_morto = true;
-		muda_sprite(spr_pig_dead);
-	}
-	else
-	{
-		alarm[0] = room_speed;
-		sprite_index = spr_pig_hit;
-	}
-}
+// O sprite original olha para a esquerda
+image_xscale = -direcao;
