@@ -1,0 +1,1 @@
+other.levar_dano();
